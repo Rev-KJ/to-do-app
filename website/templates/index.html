@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Todo App</title>
+    
 </head>
 
 <body>
     <div>
         <h1>To Do List</h1>
+
+        <img src="{{ url_for('static', filename='lets-do-this') }}" alt="Example Image" class="right-image">
+    <div>
 
         <script>
             function validateForm() {
@@ -44,9 +48,9 @@
     <p>Task Number {{ todo.id }}: {{ todo.task }} | Task Complete? {{ todo.complete }}</p>
     <p>Date Created: {{ todo.date_created }}</p>
     {% if todo.complete == False %}
-    <p>Task Incomplete. <a href="/update/{{ todo.id }}?complete=True">Update Task Status?</a></p>
+    <p>Task Incomplete. <a href="/update/{{ todo.id }}?complete=True">Update Task Status!</a></p>
     {% else %}
-    <p>Task Complete. <a href="/update/{{ todo.id }}?complete=False">Update Task Status?</a></p>
+    <p>Task Complete. <a href="/update/{{ todo.id }}?complete=False">Update Task Status!</a></p>
     {% endif %}
 
     <!-- Add a confirmation dialog for delete task -->
