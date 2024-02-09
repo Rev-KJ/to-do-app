@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='style.css') }}">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div>
+        <h1>To Do List</h1>
+
+        <script>
+            function validateForm() {
+                var taskInput = document.getElementById("task").value;
+                if (taskInput.trim() === "") {
+                    alert("Please enter a task before submitting.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+        
+        <form action="/add" method="post" onsubmit="return validateForm()">
+            <div>
+                <label>Todo task</label>
+                <input type="text" id="task" name="task" placeholder="Enter a Task">
+                <button type="submit">Add a Task</button>
+            </div>
+        </form>
+        <p>{{ datetime }}</p>
+
+        <hr>
+
+        {% if message %}
+<p>{{message}}</p>
+{% endif %}
+
+
+{% for todo in todo_list %}
+<div>
+    <p>Task Number {{ todo.id }}: {{ todo.task }} | Task Complete? {{ todo.complete }}</p>
+    <p>Date Created: {{ todo.date_created }}</p>
+    {% if todo.complete == False %}
+    <p>Task Incomplete. <a href="/update/{{ todo.id }}?complete=True">Update Task Status?</a></p>
+    {% else %}
+    <p>Task Complete. <a href="/update/{{ todo.id }}?complete=False">Update Task Status?</a></p>
+    {% endif %}
+
+    <!-- Add a confirmation dialog for delete task -->
+    <p><a href="#" onclick="confirmDelete({{ todo.id }})">Delete Task?</a></p>
+    
+    <!-- Edit form -->
+    <form action="/edit/{{ todo.id }}" method="post">
+        <label for="edit-task">Edit Task:</label>
+        <input type="text" id="edit-task" name="task" value="{{ todo.task }}">
+        <button type="submit">Save</button>
+    </form>
+</div>
+{% endfor %}
+
+<script>
+function confirmDelete(todoId) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        window.location.href = "/delete/" + todoId; // Redirect to delete task route
+    }
+}
+</script>
+
+
+    </div>
+</body>
+
+</html>

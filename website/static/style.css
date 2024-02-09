@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif; /* Use a sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-color: #b7f5a9; /* Light grey background */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #000000; /* Dark grey heading color */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form > div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #074a15; /* Light grey border */
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    padding: 8px 16px;
+    background-color: #074a15; /* Blue button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.task {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 4px;
+}
+
+.task p {
+    margin: 0;
+}
+
+.task a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+.task a:hover {
+    text-decoration: underline;
+}
